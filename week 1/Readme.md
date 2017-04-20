@@ -1,13 +1,11 @@
-#The JavaScript tutorial ( Ilya Kantor )
+# The JavaScript tutorial ( Ilya Kantor )
 
-<ul>
-  <li>**[2.1:Hello, world!](#1)</li>
-  <li>Mục con 2</li>
-  <li>Mục con 3</li>
-  <li>Mục con 4</li>
-  <li>Mục con 5</li>
-</ul>
 
+  - **[2.1:Hello, world!](#1)**
+  - **[2.2:Code structure](#2)**
+  - **[2.4:Variables](#3)**
+  - **[2.5:Data types](#4)**   
+  
 <a name="1"></a>
 ## 2.1:Hello, world!
 
@@ -39,6 +37,7 @@ Chúng ta cũng có thể đưa ra một URL đầy đủ, ví dụ:
 
 **note** nếu src được đặt trong thẻ <script> thì nội dung bên trong bị bỏ qua
 
+<a name="2"></a>
 ## 2.2:Code structure
 
 ```
@@ -59,6 +58,7 @@ nếu bỏ ; trong trường hợp nối 2 đoạn thì không hoạt động.
 
 ## 2.3:The modern mode, "use strict"
 
+<a name="3"></a>
 ## 2.4:Variables
 dùng var hoặc let để khai báo
 
@@ -141,4 +141,5 @@ Yo!  4
 	
 - hàm const giống let nhưng ở dạng hằng số
 
-2.5:Data types
+<a name="4"></a>
+## 2.5:Data types
