@@ -143,3 +143,114 @@ Yo!  4
 
 <a name="4"></a>
 ## 2.5:Data types
+
+ 
+Có 7 kiểu cơ bản trong JavaScript.
+
+- `number` Cho số bất kỳ dạng nào: số nguyên hoặc số trôi nổi.
+
+- `stringCho` dây. Một chuỗi có thể có thêm một số ký tự, không có loại ký tự đơn lẻ.
+
+- `boolean` Cho true/ false.: lưu ý loại Backticks: ``` `hello` ```
+
+```
+Backticks là "mở rộng chức năng" báo giá. Chúng cho phép nhúng các biến và các biểu thức vào một chuỗi bằng cách gói chúng vào ${…}, ví dụ:
+  let name = "John";
+
+// embed a variable
+alert( `Hello, ${name}!` ); // Hello, John!
+
+// embed an expression
+
+alert( `the result is ${1 + 2}` ); // the result is 3
+```
+
+- `nullCho` các giá trị không xác định - một loại độc lập có một giá trị null.
+
+- `undefined` Cho các giá trị không được gán - một loại độc lập có một giá trị undefined.
+
+- `object` Cho các cấu trúc dữ liệu phức tạp hơn.
+
+- `symbol` Cho các định danh duy nhất.
+
+## 2.7:Operators
+
+toán tử
+
+## 2.8  Interaction: alert, prompt, confirm
+
+```
+let age = prompt('How old are you?', 100);
+
+alert(`You are ${age} years old!`); // You are 100 years old!
+```
+
+hàm prompt nhập vào 1 giá trị
+
+```
+let isBoss = confirm("Are you the boss?");
+
+alert( isBoss ); // true is OK is pressed
+```
+
+Hiển thị một tin nhắn và chờ người dùng nhấn "OK" hoặc "CANCEL". Nó trả về trueOK và falsecho CANCEL / Esc.
+
+## 2.10: Conditional operators: if, '?'
+
+điều kiện if else , nhập giá trị thông qua prompt
+
+
+# Code quality
+
+## 3.1:Debugging in Chrome
+
+The “sources” pane: khi vào bằng Chrome hoặc firefox( có cài fire bug) có một công cụ hỗ trợ , cho việc xem kiểm tra cấu trúc của trang web
+
+, thực hiện bằng cách nhấn f12
+
+<img src="http://image.prntscr.com/image/6ba4508f4651463c9e325614f5795542.png">
+gồm 3 mục
+- **Vùng tài nguyên** liệt kê các tệp html, javascript, css và các tệp khác bao gồm các hình ảnh được gắn vào trang. Tiện ích Chrome cũng có thể xuất hiện ở đây.
+
+- **Khu vực nguồn** hiển thị mã nguồn.
+
+- **Vùng thông tin** và kiểm soát là để gỡ lỗi
+
+- **Console** tương tự như trình biên dịch của các phần mềm khác
+
+- **Breakpoints** là một điểm của mã mà trình gỡ lỗi sẽ tự động tạm dừng việc thực hiện JavaScript. hoặc có thể dùng `debugger;` 
+Một breakpoint là một điểm dừng có chủ đích trong code, dùng để hỗ trợ lập trình viên trong quá trình debug. Khi chương trình chạy đến một breakpoint, bạn có thể “bước qua” (step-through) từng dòng lệnh và kiểm tra xem mọi logic có đúng như ý đồ. Ở trạng thái dừng của breakpoint, bạn cũng có thể kiểm tra giá trị của từng biến tại thời điểm hiện tại. Điều này giúp xác định một lỗi thường gặp nhưng ít được để ý: sử dụng một biến khi chưa khởi tạo biến đó.
+http://karmiphuc.com/cong-nghe/debug-javascript-de-dang-voi-chrome-dev-tools/
+
+
+
+tham khảo : https://developers.google.com/web/tools/chrome-devtools/
+
+## 3.3 :comment
+
+sử dụng cmt để chú thích cho câu lệnh
+
+- http://jshint.com/  công cụ tự động kiểm  tra style
+
+
+
+
+
+
+
+## 3.5:Automated testing with mocha
+
+Tại sao chúng ta cần các bài kiểm tra?
+
+Khi viết một hàm, chúng ta thường có thể tưởng tượng nên làm gì: các tham số nào cho kết quả nào.
+
+Trong quá trình phát triển, chúng ta có thể kiểm tra chức năng bằng cách chạy nó và so sánh kết quả với mong muốn. Ví dụ, chúng ta có thể làm điều đó trong bảng điều khiển.
+
+Nếu có gì sai - sau đó chúng tôi sửa mã, chạy lại, kiểm tra kết quả - và cứ như vậy cho đến khi nó hoạt động.
+
+Nhưng hướng dẫn như vậy "chạy lại" là không hoàn hảo.
+
+Khi kiểm tra mã bằng tay chạy lại - bạn dễ dàng bỏ lỡ một cái gì đó . vì vậy tự động giúp chúng ta thực hiện ez hơn
+
+
+
