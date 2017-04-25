@@ -252,5 +252,136 @@ Nhưng hướng dẫn như vậy "chạy lại" là không hoàn hảo.
 
 Khi kiểm tra mã bằng tay chạy lại - bạn dễ dàng bỏ lỡ một cái gì đó . vì vậy tự động giúp chúng ta thực hiện ez hơn
 
+# Objects: the basics
+
+## 4.1 :Objects
+
+- mỗi Objects được tạo ra nằm trong dấu {...} , thuộc tính nằm trong "key: value" key từ khóa , value giá trị tùy người dùng đưa vào 
+
+<img src="http://javascript.info/article/object/object.png">
+
+- tạo 1 object trống
+
+```
+let user = new Object(); // "object constructor" syntax
+let user = {};  // "object literal" syntax
+```
+### Literals and properties
+
+```
+let user = {     // an object
+  name: "John",  // by key "name" store value "John"
+  age: 30        // by key "age" store value 30
+};
+```
+
+
+<img src="http://javascript.info/article/object/object-user.png">
+
+
+- sử dụng
+
+```
+alert( user.name ); // John
+alert( user.age ); // 30
+```
+
+<img src="http://image.prntscr.com/image/59d73c52f7b540279a1178ab48de88cf.png">
+
+  - khi khai báo 1 biến ngoài Object thì thay thế dấu , bằng ngoặc vuông 
+
+  <img src="http://image.prntscr.com/image/cbb65c40941344d08d659e845fe3d654.png">
+
+  
+  ### Property value shorthand
+  
+  <img src="http://image.prntscr.com/image/bc869c05bf31491086a96a313e8c4a36.png">
+
+Thay vì name:namechúng ta chỉ có thể viết name, như thế này:
+
+```
+function makeUser(name, age) {
+  return {
+    name, // same as name: name
+    age   // same as age: age
+  };
+}
+```
+
+Chúng ta có thể sử dụng cả thuộc tính bình thường và các ký tự viết tắt trong cùng một đối tượng:
+
+```
+let user = {
+  name,  // same as name:name
+  age: 30
+};
+```
+
+- dùng `in` để kiểm tra sự tồn tại của 1 biến 
+
+```
+let user = { name: "John", age: 30 };
+
+alert( "age" in user ); // true, user.age exists
+alert( "blabla" in user ); // false, user.blabla doesn't exist
+```
+
+### The “for…in” loop
+
+Cú pháp:
+
+```
+for(key in object) {
+  // executes the body for each key among object properties
+}
+```
+ví dụ
+```
+let user = {
+  name: "John",
+  age: 30,
+  isAdmin: true
+};
+
+for(let key in user) {
+  // keys
+  alert( key );  // name, age, isAdmin, lấy ra các key
+  // values for the keys
+  alert( user[key] ); // John, 30, true lấy ra các thuộc tính của key
+
+}
+```
+```
+let codes = {
+  "49": "Germany",
+  "41": "Switzerland",
+  "44": "Great Britain",// ngược mảng
+  // ..,
+  "1": "USA"
+};
+
+for(let code in codes) {
+  alert(code); // 1, 41, 44, 49
+}
+```
+## Copying by reference
+
+khai báo hàm const giá trị se bị thay đổi khi tác động, thay đổi chứ không phải thay thế
+
+```
+const user = {
+  name: "John"
+};
+
+user.age = 25; // (*)
+
+alert(user.age); // 25
+```
+
+<img src="http://image.prntscr.com/image/0a455eb8acf74578a9311bd31fd415ff.png">
+
+# Garbage collection
+
+
 
 
