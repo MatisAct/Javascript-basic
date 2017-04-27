@@ -380,8 +380,93 @@ alert(user.age); // 25
 
 <img src="http://image.prntscr.com/image/0a455eb8acf74578a9311bd31fd415ff.png">
 
-# Garbage collection
+## Garbage collection
 
 
+```
+// user has a reference to the object
+let user = {
+  name: "John"
+};
+```
+giả sử đây là 1 biến tên  user với thuộc tính là `name:"John"`
+
+giờ bạn ghi đè lên user =`user = null;` lúc này thuộc tính ban đầu của nó se ko truy cập được nữa!
+
+<img src="http://image.prntscr.com/image/197963349867489db6e86935c3b6d5cd.png">
 
 
+- tiếp tiếp
+```
+// user has a reference to the object
+let user = {
+  name: "John"
+};
+
+let admin = user;
+```
+- giờ giả sử thêm `user = null;` lúc này biến user trở về trạng thái null, lúc này mọi truy vấn giá trị vào user bị error, nhưng chúng ta có thể truy vấn giá trị `name: "John"` thông qua biến admin.
+
+## Symbol type
+
+### Symbols
+  `Symbol(name);` mang giá trị duy nhất
+  ```
+let id1 = Symbol("id");
+let id2 = Symbol("id");
+
+alert(id1 == id2); // false vì id1 và id2 khai báo bằng hàm symbol 
+  ```
+### “Hidden” properties
+có thể ghi đè data lên mà ko bị gì cả,
+
+```
+let user = { name: "John" };
+let id = Symbol("id");
+//id khai báo ở let và id trong biến user là khác nhau
+user[id] = "ID Value";
+alert( user[id] ); // "id value"   //we can access the data using the symbol as the key
+```
+
+nhưng khi ghi đè 2 thuộc tính thì buzz! :v
+
+```
+let user = { name: "John" };
+
+// our script uses "id" property
+user.id = "ID Value";
+
+// ...if later another script the uses "id" for its purposes...
+
+user.id = "Their id value"
+// boom! overwritten! it did not mean to harm the colleague, but did it!
+``` 
+### Symbols in a literal
+
+```
+let id = Symbol("id");
+
+let user = {
+  name: "John",
+  [id]: 123 // not just "id: 123" khai báo , thuộc tính symbolic
+};
+```
+[symbolic] không tham gia vòng lặp for..in
+
+### Global symbols
+  
+  khi 2 biến có cùng 1 giá trị ,  nhưng tên chúng khác nhau , ta sử dụng hàm `Symbol.for(name)` khi đó 2 đứa này sẽ bằng nhau
+
+  ```
+// read from the global registry
+let name = Symbol.for("name"); // if the symbol did not exist, it is created
+
+// read it again
+let nameAgain = Symbol.for("name");
+
+// the same symbol
+alert( name === nameAgain ); // true
+
+  ```
+
+## Object methods, "this"
