@@ -470,3 +470,109 @@ alert( name === nameAgain ); // true
   ```
 
 ## Object methods, "this"
+đại loại là chèn 1 hàm vào 1 biến vậy :troll:
+
+```
+let user = {
+  name: "John",
+  age: 30
+};
+
+user.sayHi = function() {
+  alert("Hello!");
+};
+
+user.sayHi(); // Hello!
+```
+hoặc là 
+```
+let user = {
+  // ...
+};
+
+// first, declare
+function sayHi() {
+  alert("Hello!");
+};
+
+// then add as a method
+user.sayHi = sayHi;
+
+user.sayHi(); // Hello!
+```
+- cú pháp ngắn hơn, kiểu này bỏ qua function 
+```
+let user = {
+  sayHi: function() {
+    alert("Hello");
+  }
+};
+
+// method shorthand looks better, right?
+let user = {
+  sayHi() { // same as "sayHi: function()"
+    alert("Hello");
+  }
+};
+```
+
+- để truy cập đối tượng trong biến có thể dùng từ khóa `this` thay cho tên biến 
+```
+let user = {
+  name: "John",
+  age: 30,
+
+  sayHi() {
+    alert(this.name);//Ở đây trong quá trình thực hiện user.sayHi(), giá trị của thissẽ là user.
+  }
+
+};
+
+user.sayHi(); // John
+```
+- Nếu chúng ta quyết định sao chép usersang một biến khác, ví dụ admin = uservà ghi userđè lên cái gì khác, thì nó sẽ truy cập vào đối tượng sai.
+
+```
+let user = {
+  name: "John",
+  age: 30,
+
+  sayHi() {
+    alert( user.name ); // leads to an error
+  }
+
+};
+
+
+let admin = user;
+user = null; // overwrite to make things obvious
+
+admin.sayHi(); // Whoops! inside sayHi(), the old name is used! error!
+```
+
+Ví dụ, cùng một chức năng có thể có khác nhau "này" khi được gọi từ các đối tượng khác nhau:
+
+ 
+```
+let user = { name: "John" };
+let admin = { name: "Admin" };
+
+function sayHi() {
+  alert( this.name );
+}
+
+// use the same functions in two objects
+user.f = sayHi;
+admin.f = sayHi;
+
+// these calls have different this
+// "this" inside the function is the object "before the dot"
+user.f(); // John  (this == user)
+admin.f(); // Admin  (this == admin)
+
+admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+```
+
+
+
+
