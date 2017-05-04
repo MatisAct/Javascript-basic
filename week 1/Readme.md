@@ -572,6 +572,199 @@ admin.f(); // Admin  (this == admin)
 
 admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
 ```
+# Data types
+
+## Methods of primitives
+
+có 6 kiểu giá trị:` string, number, boolean, symbol, nullvà undefined.` có thể tạo ra nhiều loại với {...}
+
+vd
+```
+let john = {
+  name: "John",
+  sayHi: function() {
+    alert("Hi deo!");
+  }
+};
+
+john.sayHi(); // Hi deo!
+```
+
+## number
+
+Tất cả các số trong JavaScript được lưu trữ ở định dạng 64-bit
+
+### More ways to write a number
+
+```
+1bn=1000000
+1.2bn=1.200.000
+1e9=1.000.000.000
+1e-6=0.000001
+
+```
+### Hex, binary and octal numbers
+
+Hệ thống số nhị phân và bát phân hiếm khi được sử dụng nhưng cũng được hỗ trợ sử dụng 0bvà 0otiền tố:
+
+ ```
+ let a = 0b11111111; // binary form of 255
+let b = 0o377; // octal form of 255
+
+alert( a == b ); // true, the same number 255 at both sides
+```
+
+### toString(base)
+
+Phương thức num.toString(base)trả về một biểu diễn chuỗi numtrong hệ thống số với giá trị đã cho base.
+
+Ví dụ:
+
+```
+ let num = 255;
+
+alert( num.toString(16) );  // ff
+alert( num.toString(2) );   // 11111111
+```
+
+Các basethể thay đổi từ 2tới 36. Theo mặc định nó 10.
+
+Hầu hết các trường hợp sử dụng thường là:
+
+Base = 16 được sử dụng cho các màu hex, encodings ký tự vv, chữ số có thể được 0..9hoặc A..F.
+
+Cơ sở = 2 chủ yếu là để gỡ lỗi hoạt động bitwise, chữ số có thể được 0hoặc 1.
+
+Cơ sở = 36 là tối đa, chữ số có thể được 0..9hoặc A..Z. Toàn bộ bảng chữ cái latin được sử dụng để biểu thị một số. Một trường hợp thú vị nhưng hữu ích 36là khi chúng ta cần phải chuyển một số nhận dạng số dài thành một cái gì đó ngắn hơn, ví dụ để tạo ra một url ngắn. Chỉ đơn giản có thể đại diện cho nó trong hệ thống số với cơ sở 36:
+
+### Rounding
+
+
+bảng tóm tắt
+|Math.floor xuống|	Math.ceil lên |	Math.round	gần nhất|Math.trunc bỏ thập phân|
+|----------|-------------|--------------|----------|
+|3.1	|3|	4|	3|	3|
+|3.6	3	|4|	4|	3|
+|-1.1	|-2|	-1|	-1|	-1|
+|-1.6	|-2|	-1|	-2|	-1|
+
+`num.toFixed(sau phấy)` dùng để làm tròn số
+```
+let num = 12.34;
+alert( num.toFixed(1) ); // "12.3"
+```
+
+
+### Imprecise calculations
+
+
+mất độ chính xác khi so sánh hay lấy số cụ thể , nên dùng hàm toFixed để tăng độ chính xác
+vd
+```
+alert( 0.1 + 0.2 ); // 0.30000000000000004
+```
+rõ ràng khi so sánh vs 0.3 sẽ false vì vậy dùng fixed về 2 đơn vị để đúng
+
+### hàm khác
+
+`Math.random()` tạo một mảng radom
+
+- Math.max(a, b, c...) / Math.min(a, b, c...)
+Trả lại số lớn nhất / nhỏ nhất từ ​​số lượng tùy ý của các đối số.
+
+``` 
+ alert( Math.max(3, 5, -10, 0, 1) ); // 5
+alert( Math.min(1, 2 ); // 1
+```
+
+- Math.pow(n, power):lũy thừa
+```
+alert( Math.pow(2, 10) ); // 2 in power 10 = 1024
+```
+
+## string
+
+### Quotes
+
+- chuỗi đặt trong dấu '' ""  ```` 
+```
+function sum(a, b) {
+  return a + b;
+}
+
+alert(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3. dấu `` dùng khi truyền biến 
+```
+- hoặc kéo nhiều dòng còn đối với '' hoặc "" thì tạch nhé okey! trừ khi dùng \n
+```
+let guestList = `Guests:
+ * John
+ * Pete
+ * Mary
+`;
+
+alert(guestList); // a list of guests, multiple lines
+```
+
+### String length
+
+- đếm chiều dài chuỗi
+```
+alert( `My\n`.length ); // 3
+```
+### Accessing characters
+
+```
+let str = `Hello`;
+
+// the first character
+alert( str[0] ); // H
+alert( str.charAt(0) ); // H
+
+// the last character
+alert( str[str.length - 1] ); // o
+```
+
+### Changing the case
+in thường và in hoa
+
+```
+alert( 'Interface'.toUpperCase() ); // INTERFACE
+alert( 'Interface'.toLowerCase() ); // interface
+```
+ 
+## Arrays
+### Declaration
+
+- cách khai báo một hàm trống 
+
+```
+let arr = new Array();
+let arr = [];
+```
+- khai báo và lấy mảng
+
+```
+let fruits = ["Apple", "Orange", "Plum"];
+
+alert( fruits[0] ); // Apple
+alert( fruits[1] ); // Orange	
+alert( fruits[2] ); // Plum
+```
+- có thể thay thế 1 biến trong mảng `fruits[3] = 'Lemon'; // now ["Apple", "Orange", "Plum", "Lemon"]`
+
+- hàm length đếm số phần tử, 1 mảng có thể lưu nhiều thể loại khácnhau
+
+```
+// mix of values
+let arr = [ 'Apple', { name: 'John' }, true, function() { alert('hello'); } ];
+
+// get the object at index 1 and then show its name
+alert( arr[1].name ); // John
+
+// get the function at index 3 and run it
+arr[3](); // hello
+```
+
 
 
 
