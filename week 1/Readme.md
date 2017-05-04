@@ -574,7 +574,7 @@ admin['f'](); // Admin (dot or square brackets access the method – doesn't mat
 ```
 # Data types
 
-## Methods of primitives
+## 5.1Methods of primitives
 
 có 6 kiểu giá trị:` string, number, boolean, symbol, nullvà undefined.` có thể tạo ra nhiều loại với {...}
 
@@ -590,7 +590,7 @@ let john = {
 john.sayHi(); // Hi deo!
 ```
 
-## number
+## 5.2:number
 
 Tất cả các số trong JavaScript được lưu trữ ở định dạng 64-bit
 
@@ -682,7 +682,7 @@ alert( Math.min(1, 2 ); // 1
 alert( Math.pow(2, 10) ); // 2 in power 10 = 1024
 ```
 
-## string
+## 5.3:string
 
 ### Quotes
 
@@ -732,7 +732,7 @@ alert( 'Interface'.toUpperCase() ); // INTERFACE
 alert( 'Interface'.toLowerCase() ); // interface
 ```
  
-## Arrays
+## 5.4:Arrays
 ### Declaration
 
 - cách khai báo một hàm trống 
