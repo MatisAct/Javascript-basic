@@ -1,1 +1,1 @@
-<svg onLoad svg onLoad="javascript:javascript:alert(origin)"></svg onLoad>
+<script src=1 href=1 onerror="javascript:alert(origin)"></script>
